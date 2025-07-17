@@ -18,5 +18,29 @@
         "Timestamp": "2025-07-17T20:11:29.0486626Z"
       }
     ]
+  },
+  {
+    "Id": "ee90e729-463a-423a-a248-410667b4ad1b",
+    "DefinitionId": "hiring-wf",
+    "Description": "Harsh Gupta for Software Engineer Role (Roll\u00A022IM3FP29, harsh90731@gmail.com, harsh90731@kgpian.iitkgp.ac.in) applied",
+    "CurrentState": "Hired",
+    "History": [
+      {
+        "ActionId": "ReviewApp",
+        "Timestamp": "2025-07-17T21:03:43.7014531Z"
+      },
+      {
+        "ActionId": "DoPhoneScreen",
+        "Timestamp": "2025-07-17T21:04:12.7195737Z"
+      },
+      {
+        "ActionId": "ScheduleOnsite",
+        "Timestamp": "2025-07-17T21:04:29.9045793Z"
+      },
+      {
+        "ActionId": "ExtendOffer",
+        "Timestamp": "2025-07-17T21:04:47.1438834Z"
+      }
+    ]
   }
 ]

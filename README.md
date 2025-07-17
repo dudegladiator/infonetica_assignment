@@ -1,7 +1,6 @@
 # Configurable Workflow Engine
 
-This project is a .NET 8 backend service that implements a configurable state-machine workflow engine, as per the Infonetica take-home exercise.
-This is a **lightweight**, **self-contained** workflow engine built with .NET 8 minimal APIs. It allows you to:
+This project is a .NET 8 backend service that implements a configurable state-machine workflow engine, as per the Infonetica take-home exercise. This is a **lightweight**, **self-contained** workflow engine built with .NET 8 minimal APIs. It allows you to:
 
 * **Define** workflows (states + actions).
 * **Start** instances of those workflows, with custom descriptions.
@@ -50,6 +49,7 @@ This is a **lightweight**, **self-contained** workflow engine built with .NET 8 
 | GET    | `/instances/{instId}`                    | —                          | `200 OK` + JSON      | `404 Not Found { error: "..." }`   |
 | GET    | `/instances`                             | —                          | `200 OK` + `[ ... ]` | —                                  |
 
+> **Note:** These endpoints could be formally defined in a Swagger/OpenAPI specification for interactive documentation and validation, but for simplicity they are listed here in plain markdown.
 ---
 
 
@@ -97,7 +97,7 @@ curl -i -X POST http://localhost:5246/definitions/hiring-wf/instances \
 
 ```json
 {
-  "id": "c3f1a2e4-...",
+  "id": "<INST_ID>",
   "definitionId": "hiring-wf",
   "description": "Harsh Gupta (Roll 22IM3FP29, harsh90731@gmail.com) applied",
   "currentState": "Applied",
@@ -109,16 +109,16 @@ curl -i -X POST http://localhost:5246/definitions/hiring-wf/instances \
 
 ```bash
 # Review application
-curl -i -X POST http://localhost:5246/instances/c3f1a2e4-.../actions/ReviewApp
+curl -i -X POST http://localhost:5246/instances/<INST_ID>/actions/ReviewApp
 
 # Do phone screen
-curl -i -X POST http://localhost:5246/instances/c3f1a2e4-.../actions/DoPhoneScreen
+curl -i -X POST http://localhost:5246/instances/<INST_ID>/actions/DoPhoneScreen
 
 # Schedule onsite
-curl -i -X POST http://localhost:5246/instances/c3f1a2e4-.../actions/ScheduleOnsite
+curl -i -X POST http://localhost:5246/instances/<INST_ID>/actions/ScheduleOnsite
 
 # Extend offer
-curl -i -X POST http://localhost:5246/instances/c3f1a2e4-.../actions/ExtendOffer
+curl -i -X POST http://localhost:5246/instances/<INST_ID>/actions/ExtendOffer
 ```
 
 5. **Inspect** final status:
@@ -133,6 +133,11 @@ You’ll see `"currentState": "Hired"` and a full `history` of steps.
 
 ## Assumptions & Limitations
 
-*   The service uses simple JSON file storage, which is not thread-safe for concurrent writes.
-*   Error handling provides basic JSON responses with an `error` key.
-*   Input validation is handled within the service layer.
+* The service uses simple JSON file storage, which is not thread-safe for concurrent writes.
+* Error handling provides basic JSON responses with an `error` key.
+* Input validation is handled within the service layer.
+* **No authentication/authorization**: any client can hit any endpoint.
+* **Single‑tenant**: there’s no concept of multiple users or namespaces.
+* **Whole‑file writes**: every change rewrites the entire JSON file, so very large workflows or many instances could be slow.
+* **No paging or filtering** on the list endpoints (everything is returned in one go).
+* **No incremental “add state” or “add action”** endpoints—you must POST the full definition each time.

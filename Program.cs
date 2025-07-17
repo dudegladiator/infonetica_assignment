@@ -10,6 +10,6 @@ var app = builder.Build();
 
 // wire up all our workflow-definition routes
 app.MapWorkflowEndpoints();
-app.MapGet("/", () => "Hello World!");
+app.MapGet("/", () => "Welcome to the Infonetica Workflow API!");
 
 app.Run();

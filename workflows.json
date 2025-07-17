@@ -63,7 +63,7 @@
         "Name": "Close Ticket",
         "Enabled": true,
         "FromStates": [
-          "Resolved", "Open"
+          "Resolved"
         ],
         "ToState": "Closed",
         "Description": "Confirm \u0026 close"
@@ -73,7 +73,7 @@
   {
     "Id": "hiring-wf",
     "Description": "Infonetica candidate hiring process",
-    "CreatedAt": "2025-07-17T20:05:28.2308949Z",
+    "CreatedAt": "2025-07-17T20:55:51.0262406Z",
     "States": [
       {
         "Id": "Applied",
