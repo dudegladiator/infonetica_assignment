@@ -1,0 +1,80 @@
+{
+  "id": "hiring-wf",
+  "description": "Infonetica candidate hiring process",
+  "states": [
+    {
+      "id": "Applied",
+      "name": "Applied",
+      "isInitial": true,
+      "isFinal": false,
+      "enabled": true,
+      "description": "Candidate has submitted their application"
+    },
+    {
+      "id": "PhoneScreen",
+      "name": "Phone Screen",
+      "isInitial": false,
+      "isFinal": false,
+      "enabled": true,
+      "description": "Initial phone interview completed"
+    },
+    {
+      "id": "Onsite",
+      "name": "Onsite Interview",
+      "isInitial": false,
+      "isFinal": false,
+      "enabled": true,
+      "description": "On‑site technical loop done"
+    },
+    {
+      "id": "OfferExtended",
+      "name": "Offer Extended",
+      "isInitial": false,
+      "isFinal": false,
+      "enabled": true,
+      "description": "A verbal offer has been made"
+    },
+    {
+      "id": "Hired",
+      "name": "Hired",
+      "isInitial": false,
+      "isFinal": true,
+      "enabled": true,
+      "description": "Candidate accepted the offer"
+    }
+  ],
+  "actions": [
+    {
+      "id": "ReviewApp",
+      "name": "Review Application",
+      "enabled": true,
+      "fromStates": ["Applied"],
+      "toState": "PhoneScreen",
+      "description": "HR reviews the application"
+    },
+    {
+      "id": "DoPhoneScreen",
+      "name": "Do Phone Screen",
+      "enabled": true,
+      "fromStates": ["PhoneScreen"],
+      "toState": "Onsite",
+      "description": "Recruiter conducts phone interview"
+    },
+    {
+      "id": "ScheduleOnsite",
+      "name": "Schedule Onsite",
+      "enabled": true,
+      "fromStates": ["Onsite"],
+      "toState": "OfferExtended",
+      "description": "Team schedules onsite interviews"
+    },
+    {
+      "id": "ExtendOffer",
+      "name": "Extend Offer",
+      "enabled": true,
+      "fromStates": ["OfferExtended"],
+      "toState": "Hired",
+      "description": "Hiring manager extends the offer"
+    }
+  ]
+}

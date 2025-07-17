@@ -1,0 +1,162 @@
+[
+  {
+    "Id": "ticket-wf",
+    "Description": "Basic ticket resolution workflow",
+    "CreatedAt": "2025-07-17T20:04:20.2870652Z",
+    "States": [
+      {
+        "Id": "Open",
+        "Name": "Open",
+        "IsInitial": true,
+        "IsFinal": false,
+        "Enabled": true,
+        "Description": "Ticket created"
+      },
+      {
+        "Id": "InProgress",
+        "Name": "In Progress",
+        "IsInitial": false,
+        "IsFinal": false,
+        "Enabled": true,
+        "Description": "Work started"
+      },
+      {
+        "Id": "Resolved",
+        "Name": "Resolved",
+        "IsInitial": false,
+        "IsFinal": false,
+        "Enabled": true,
+        "Description": "Ticket resolved"
+      },
+      {
+        "Id": "Closed",
+        "Name": "Closed",
+        "IsInitial": false,
+        "IsFinal": true,
+        "Enabled": true,
+        "Description": "Ticket closed"
+      }
+    ],
+    "Actions": [
+      {
+        "Id": "StartWork",
+        "Name": "Start Work",
+        "Enabled": true,
+        "FromStates": [
+          "Open"
+        ],
+        "ToState": "InProgress",
+        "Description": "Begin working"
+      },
+      {
+        "Id": "Resolve",
+        "Name": "Resolve Ticket",
+        "Enabled": true,
+        "FromStates": [
+          "InProgress"
+        ],
+        "ToState": "Resolved",
+        "Description": "Resolve issue"
+      },
+      {
+        "Id": "Close",
+        "Name": "Close Ticket",
+        "Enabled": true,
+        "FromStates": [
+          "Resolved", "Open"
+        ],
+        "ToState": "Closed",
+        "Description": "Confirm \u0026 close"
+      }
+    ]
+  },
+  {
+    "Id": "hiring-wf",
+    "Description": "Infonetica candidate hiring process",
+    "CreatedAt": "2025-07-17T20:05:28.2308949Z",
+    "States": [
+      {
+        "Id": "Applied",
+        "Name": "Applied",
+        "IsInitial": true,
+        "IsFinal": false,
+        "Enabled": true,
+        "Description": "Candidate has submitted their application"
+      },
+      {
+        "Id": "PhoneScreen",
+        "Name": "Phone Screen",
+        "IsInitial": false,
+        "IsFinal": false,
+        "Enabled": true,
+        "Description": "Initial phone interview completed"
+      },
+      {
+        "Id": "Onsite",
+        "Name": "Onsite Interview",
+        "IsInitial": false,
+        "IsFinal": false,
+        "Enabled": true,
+        "Description": "On\u2011site technical loop done"
+      },
+      {
+        "Id": "OfferExtended",
+        "Name": "Offer Extended",
+        "IsInitial": false,
+        "IsFinal": false,
+        "Enabled": true,
+        "Description": "A verbal offer has been made"
+      },
+      {
+        "Id": "Hired",
+        "Name": "Hired",
+        "IsInitial": false,
+        "IsFinal": true,
+        "Enabled": true,
+        "Description": "Candidate accepted the offer"
+      }
+    ],
+    "Actions": [
+      {
+        "Id": "ReviewApp",
+        "Name": "Review Application",
+        "Enabled": true,
+        "FromStates": [
+          "Applied"
+        ],
+        "ToState": "PhoneScreen",
+        "Description": "HR reviews the application"
+      },
+      {
+        "Id": "DoPhoneScreen",
+        "Name": "Do Phone Screen",
+        "Enabled": true,
+        "FromStates": [
+          "PhoneScreen"
+        ],
+        "ToState": "Onsite",
+        "Description": "Recruiter conducts phone interview"
+      },
+      {
+        "Id": "ScheduleOnsite",
+        "Name": "Schedule Onsite",
+        "Enabled": true,
+        "FromStates": [
+          "Onsite"
+        ],
+        "ToState": "OfferExtended",
+        "Description": "Team schedules onsite interviews"
+      },
+      {
+        "Id": "ExtendOffer",
+        "Name": "Extend Offer",
+        "Enabled": true,
+        "FromStates": [
+          "OfferExtended"
+        ],
+        "ToState": "Hired",
+        "Description": "Hiring manager extends the offer"
+      }
+    ]
+  }
+]

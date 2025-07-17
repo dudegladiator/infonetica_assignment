@@ -1,0 +1,15 @@
+{
+  "id": "ticket-wf",
+  "description": "Basic ticket resolution workflow",
+  "states": [
+    { "id": "Open",       "name": "Open",       "isInitial": true,  "isFinal": false, "enabled": true, "description": "Ticket created" },
+    { "id": "InProgress", "name": "In Progress","isInitial": false, "isFinal": false, "enabled": true, "description": "Work started" },
+    { "id": "Resolved",   "name": "Resolved",   "isInitial": false, "isFinal": false, "enabled": true, "description": "Ticket resolved" },
+    { "id": "Closed",     "name": "Closed",     "isInitial": false, "isFinal": true,  "enabled": true, "description": "Ticket closed" }
+  ],
+  "actions": [
+    { "id": "StartWork", "name": "Start Work",   "enabled": true, "fromStates": ["Open"],       "toState": "InProgress",  "description":"Begin working"},
+    { "id": "Resolve",   "name": "Resolve Ticket","enabled": true, "fromStates": ["InProgress"], "toState": "Resolved",    "description":"Resolve issue"},
+    { "id": "Close",     "name": "Close Ticket", "enabled": true, "fromStates": ["Resolved"],   "toState": "Closed",      "description":"Confirm & close"}
+  ]
+}

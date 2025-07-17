@@ -1,0 +1,22 @@
+[
+  {
+    "Id": "1643bcb0-a3b6-4348-987b-d6daf88b6d3c",
+    "DefinitionId": "ticket-wf",
+    "Description": "Alice (alice@example.com)",
+    "CurrentState": "Closed",
+    "History": [
+      {
+        "ActionId": "StartWork",
+        "Timestamp": "2025-07-17T20:10:07.7965412Z"
+      },
+      {
+        "ActionId": "Resolve",
+        "Timestamp": "2025-07-17T20:11:11.5170305Z"
+      },
+      {
+        "ActionId": "Close",
+        "Timestamp": "2025-07-17T20:11:29.0486626Z"
+      }
+    ]
+  }
+]
